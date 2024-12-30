@@ -1,0 +1,443 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f1f1f1; /* Updated background color */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding-top: 60px; /* Adjust padding to move content lower */
+}
+
+/* Header Container */
+.header-container {
+    width: 100%;
+    background: linear-gradient(135deg, #0078d4, #0078d4); /* Solid gradient with same color for uniformity */
+    color: #ffffff;
+    padding: 30px 20px; /* Increased padding for a more open and spacious feel */
+    margin-top: -100px; /* Subtle header positioning */
+    text-align: center;
+    border-radius: 15px; /* More rounded corners for a softer look */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); /* Enhanced shadow for more dramatic depth */
+    position: relative; 
+    z-index: 2;
+   
+    background-size: cover;
+    background-position: center;
+    overflow: hidden; /* Hide anything that overflows from rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Soft border for extra definition */
+    animation: slideIn 1s ease-out; /* Animation for header appearance */
+}
+
+
+/* Header Animation */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Back Button Styling */
+.back-button {
+    background: linear-gradient(45deg, #0056b3, #007bff); 
+    color: #fff;
+    padding: 15px 30px; /* Larger padding for a more substantial feel */
+    border: none;
+    border-radius: 10px;
+    font-weight: 700; /* Stronger font weight */
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Deeper shadow */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    border: 2px solid transparent; /* Border for the hover effect */
+    background-clip: padding-box;
+}
+
+.back-button:hover {
+    background: linear-gradient(45deg, #004494, #0056b3); 
+    transform: scale(1.1); /* Slightly larger on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
+    border-color: #ffffff; /* Border appears on hover */
+}
+
+/* Header Title (h1) Styling */
+h1 {
+    font-size: 2.0em; /* Larger font size for more visual impact */
+    color: #ffffff;
+    margin-top: 20px; /* Increased margin-top for better spacing */
+    font-weight: 800; /* Bolder for more emphasis */
+    letter-spacing: 1.5px; /* Enhanced letter-spacing for readability */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5); /* Stronger text shadow */
+    font-family: 'Poppins', sans-serif; /* Modern sans-serif font */
+    text-transform: uppercase; /* Uppercase text for more boldness */
+    animation: fadeIn 1s ease-in-out; /* Animation for smooth fade-in */
+}
+
+/* Header Title Fade-In Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Logo Styling */
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 40px; 
+    width: 90px; /* Slightly larger logo size */
+    height: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+    opacity: 0.8; /* Slight opacity for logo */
+}
+
+.logo:hover {
+    transform: scale(1.15); /* Slightly larger on hover */
+    opacity: 1; /* Full opacity on hover */
+}
+
+/* Decorative Borders (Optional) */
+.header-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #007bff; /* Decorative top border */
+    border-radius: 8px 8px 0 0;
+}
+
+.header-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #007bff; /* Decorative bottom border */
+    border-radius: 0 0 8px 8px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 20px 15px; /* Adjusted padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Smaller font size for mobile */
+        margin-top: 15px;
+    }
+
+    .back-button {
+        padding: 12px 25px; /* Adjusted padding */
+        font-size: 1em; /* Adjusted font size */
+    }
+
+    .logo {
+        width: 70px; /* Smaller logo for mobile screens */
+    }
+}
+
+
+/* Invalid Credentials Styling */
+.message-alert {
+    z-index: 1;
+    padding: 10px;
+    margin: 40px auto; /* Increased margin-top to move it further down */
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid #ff4d4d;
+    background-color: #ffcccc;
+    color: #a10000;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Label and Input Styling */
+label {
+    font-size: 1.3em; /* Larger font size for better readability */
+    color: #005b96; /* Matches header/footer colors */
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 45%; /* Adjusted width for spacing */
+    text-align: right;
+    margin-top: 10px; /* Spacing between label and previous element */
+    margin-right: 10px; /* Added space between label and input field */
+    font-family: 'Poppins', sans-serif; /* Consistent font with header/footer */
+    font-weight: 600; /* Slightly bold for emphasis */
+    letter-spacing: 1px; /* Improved letter spacing */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+/* Input Fields Styling */
+input[type="text"],
+input[type="password"] {
+    width: 50%; /* Adjusted width to fit with label changes */
+    padding: 10px; /* More padding for better usability */
+    margin-top: 10px; /* Space between input and label */
+    border: none;
+    border-radius: 8px; /* Softer corners */
+    font-size: 1.1em; /* Larger font size */
+    font-family: 'Roboto', sans-serif; /* Consistent font */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #005b96; /* Highlight border on focus */
+    box-shadow: 0 6px 12px rgba(0, 91, 150, 0.3); /* Enhanced shadow on focus */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Button Styling */
+input[type="submit"] {
+    color: #ffffff;
+    background: linear-gradient(45deg, #0056b3, #0078d4); /* Gradient background */
+    padding: 12px 20px; /* Larger padding for a more prominent button */
+    border-radius: 10px; /* Softer corners */
+    font-size: 1.0em; /* Larger font size */
+    font-weight: 700; /* Bold for emphasis */
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    display: block;
+    margin: 20px auto; /* Center the button and add spacing above */
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    width: 60%;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border: 2px solid transparent; /* Add border for hover effect */
+    text-transform: uppercase; /* Consistent with header/footer */
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(45deg, #004494, #0056b3); /* Darker gradient on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+    border-color: #ffffff; /* White border on hover */
+}
+
+/* Form Layout */
+.form-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px; /* Add padding for better spacing */
+   
+   
+    background-color: none ; /* White background for contrast */
+}
+
+/* Navbar and Hover Effects */
+.navbar .nav-link {
+    color: #f1f1f1;
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    font-size: 1.2em; /* Slightly larger font */
+    font-weight: 600; /* Slightly bold */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    padding: 10px 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Rounded corners for links */
+}
+
+.navbar .nav-link:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    box-shadow: 0 8px 16px rgba(0, 123, 255, 0.4); /* Add shadow on hover */
+    background: linear-gradient(45deg, #0056b3, #0078d4); /* Gradient background on hover */
+    color: #ffffff; /* Ensure text is white */
+    text-decoration: none; /* Remove underline */
+}
+
+/* Decorative Overlay on Hover */
+.navbar .nav-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent overlay */
+    border-radius: 30px; /* Rounded corners for the overlay */
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Initially hidden */
+    z-index: -1; /* Send it behind the link */
+}
+
+.navbar .nav-link:hover::before {
+    opacity: 1; /* Show overlay on hover */
+}
+
+.navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent radial effect */
+    border-radius: 50%; /* Circular effect */
+    transform: translate(-50%, -50%) scale(0); /* Initially scale down */
+    transition: transform 0.5s ease;
+    opacity: 0;
+    z-index: -2; /* Behind the link and overlay */
+}
+
+.navbar .nav-link:hover::after {
+    transform: translate(-50%, -50%) scale(1); /* Expand radial effect */
+    opacity: 1; /* Show radial effect */
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+
+/* Footer Styling */
+.footer {
+    width: 100%;
+    background: linear-gradient(135deg, #005b96, #0078d4); /* Gradient for depth */
+    color: #ffffff;
+    padding: 30px 20px; /* Increased padding for a more spacious feel */
+    text-align: center;
+    margin-top: 50px; /* Adjusted for better spacing */
+    border-radius: 15px; /* Rounded corners for a softer appearance */
+    box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    animation: fadeInUp 1s ease-out; /* Animation for footer appearance */
+}
+
+/* Footer Animation */
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Footer Text Styling */
+.footer span {
+    font-size: 2em; /* Matching the font size for consistency */
+    margin: 10px 0;
+    color: #f1f1f1;
+    font-family: 'Roboto', sans-serif; /* Matching the font-family with header */
+    letter-spacing: 1.5px; /* Slightly more letter-spacing for readability */
+    font-weight: 700; /* Bold for visual impact, same as h1 */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle text shadow, matching h1 */
+    text-transform: uppercase; /* Capitalize the footer text, like the header */
+}
+
+/* Social Icons Styling */
+.footer .social-icons {
+    margin: 20px 0; /* Increased spacing around social icons */
+}
+
+.footer .social-icon {
+    color: #f1f1f1;
+    font-size: 2.5em; /* Larger icons for more impact */
+    margin: 0 15px; /* Increased margin for spacing */
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.footer .social-icon:hover {
+    color: #ffcc00; /* Highlight color on hover */
+    transform: scale(1.2); /* Slightly larger icons on hover */
+}
+
+/* Scroll-to-Top Button Styling */
+.scroll-top {
+    display: inline-block;
+    background-color: #0d6efd;
+    color: #ffffff;
+    padding: 12px 18px; /* Larger padding for button */
+    border-radius: 8px; /* Rounded corners for button */
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-top:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly larger on hover for interactivity */
+}
+
+.scroll-top i {
+    font-size: 20px; /* Slightly larger icon */
+}
+
+/* Decorative Borders (Optional) */
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #007bff; /* Decorative top border */
+    border-radius: 5px 5px 0 0;
+}
+
+.footer::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #007bff; /* Decorative bottom border */
+    border-radius: 0 0 5px 5px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 15px; /* Adjusted padding for smaller screens */
+    }
+
+    .footer span {
+        font-size: 1.4em; /* Slightly smaller text for mobile */
+    }
+
+    .footer .social-icon {
+        font-size: 2em; /* Smaller icons for mobile */
+        margin: 0 8px; /* Reduced spacing for smaller screens */
+    }
+
+    .scroll-top {
+        padding: 10px 15px; /* Adjusted padding */
+        font-size: 0.9em; /* Adjusted font size */
+    }
+}

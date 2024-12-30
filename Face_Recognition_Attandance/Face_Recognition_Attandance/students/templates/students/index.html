@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-CheckIn - Enhanced</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Main Container for Left Image and Right Content -->
+    <div class="container-fluid d-flex flex-column min-vh-100 p-0">
+        <div class="container mt-5">
+            <div class="row g-0 flex-fill">
+                <!-- Left Column with Background Image and Gradient Overlay -->
+                <div class="left-column col-12 col-md-6"
+                    style="background-image: url('/static/images/bg.jpg'); background-size: cover; background-position: center; height: 100vh;">
+                </div>
+
+                <!-- Right Column for Content -->
+                <div class="right-column col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-4 p-md-5">
+                    <!-- Header with Animated Logo and Title -->
+                    <header class="header text-center">
+                        <div class="logo mb-4">
+                            <img src="{% static 'images/e-checkin.png' %}" alt="E-CheckIn Logo"
+                                class="logo-img img-fluid" style="max-width: 150px; transition: transform 0.3s ease;">
+                        </div>
+                        <h1 class="text-uppercase font-weight-bold echeckin-heading">E-CheckIn</h1>
+                    </header>
+
+                    <!-- Single Login Button to Open Modal -->
+                    <div class="container">
+                        <div class="navbar-nav mx-auto">
+                            <button onclick="toggleLoginModal()" class="nav-link btn login-button">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal for Login Options -->
+                    <div id="loginModal" class="login-modal">
+                        <div class="login-modal-content">
+                            <span class="close" onclick="toggleLoginModal()">&times;</span>
+                            <h2>Select Login Type</h2>
+                            <a href="{% url 'student_login' %}" class="nav-link btn modal-option">Student Login</a>
+                            <a href="{% url 'teacher_login' %}" class="nav-link btn modal-option">Teacher Login</a>
+                            <a href="{% url 'admin:index' %}" class="nav-link btn modal-option">Admin Login</a>
+                        </div>
+                    </div>
+
+                    <script>
+                        function toggleLoginModal() {
+                            const modal = document.getElementById('loginModal');
+                            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+                        }
+
+                        // Close the modal when clicking outside the content area
+                        window.onclick = function(event) {
+                            const modal = document.getElementById('loginModal');
+                            if (event.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        }
+                    </script>
+
+                    <!-- Register Button to Open Modal -->
+                    <div class="container mt-3">
+                        <div class="navbar-nav mx-auto">
+                            <button onclick="toggleRegisterModal()" class="nav-link btn register-button">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Modal for Register Options -->
+                    <div id="registerModal" class="register-modal">
+                        <div class="register-modal-content">
+                            <span class="close" onclick="toggleRegisterModal()">&times;</span>
+                            <h2>Select Register Type</h2>
+                            <a href="{% url 'student_register' %}" class="nav-link btn modal-option">Register Student</a>
+                            <a href="{% url 'teacher_register' %}" class="nav-link btn modal-option">Register Teacher</a>
+                        </div>
+                    </div>
+
+                    <script>
+                        function toggleRegisterModal() {
+                            const modal = document.getElementById('registerModal');
+                            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+                        }
+
+                        // Close the modal when clicking outside the content area
+                        window.onclick = function(event) {
+                            const modal = document.getElementById('registerModal');
+                            if (event.target === modal) {
+                                modal.style.display = 'none';
+                            }
+                        }
+                    </script>
+
+                    <!-- Glassmorphism Information Card -->
+                    <section class="info-card bg-light bg-opacity-50 p-4 rounded-3 shadow-lg mb-4 mt-5"
+                    style="backdrop-filter: blur(10px); max-width: 700px; color: #333; position: relative; overflow: hidden; border-radius: 20px;">
+                        <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1)); z-index: -1;"></div>
+
+                        <p class="text-center mb-4" style="font-size: 1.2rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: 500;">
+                            Experience fast, secure, and accurate student attendance with our facial recognition technology. No more roll calls—just instant, hands-free check-ins!
+                        </p>
+
+                        <ul class="list-unstyled text-center" style="font-size: 1.1rem; line-height: 1.8; font-family: 'Arial', sans-serif;">
+                            <li class="mb-2" style="position: relative; padding-left: 30px;">
+                                <strong>🔒 Secure:</strong> Only authorized students are marked present.
+                                <div class="checkmark" style="position: absolute; left: 0; top: 0; font-size: 1.5rem; color: #ffcc00; opacity: 0.7;">✔️</div>
+                            </li>
+                            <li class="mb-2" style="position: relative; padding-left: 30px;">
+                                <strong>⏱ Time-Efficient:</strong> Saves time with instant check-ins.
+                                <div class="checkmark" style="position: absolute; left: 0; top: 0; font-size: 1.5rem; color: #ffcc00; opacity: 0.7;">✔️</div>
+                            </li>
+                            <li class="mb-2" style="position: relative; padding-left: 30px;">
+                                <strong>📊 Real-Time Data:</strong> Live attendance reports at your fingertips.
+                                <div class="checkmark" style="position: absolute; left: 0; top: 0; font-size: 1.5rem; color: #ffcc00; opacity: 0.7;">✔️</div>
+                            </li>
+                        </ul>
+
+                        <!-- Optional Decorative Effect: Light Glow -->
+                        <div class="glow-effect" style="position: absolute; bottom: 0; left: 0; width: 100%; height: 10px; background: rgba(255, 204, 0, 0.3); box-shadow: 0 4px 20px rgba(255, 204, 0, 0.6);"></div>
+                    </section>
+
+                    <!-- Additional Styling -->
+                    <style>
+                        .info-card {
+                            background: rgba(255, 255, 255, 0.2); /* Slight background color to give more of a frosted look */
+                            border-radius: 20px;
+                            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.4); /* Darker yellow shadow */
+                            padding: 30px;
+                            font-size: 1.1rem;
+                        }
+
+                        .info-card p {
+                            font-size: 1.2rem;
+                            font-weight: 500;
+                            color: #0056b3;
+                            line-height: 1.6;
+                        }
+
+                        .info-card ul li {
+                            margin-bottom: 15px;
+                            font-size: 1.1rem;
+                            line-height: 1.8;
+                            color: #0056b3;
+                        }
+
+                        .info-card .checkmark {
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            font-size: 1.3rem;
+                            color: grey;
+                            opacity: 0.7;
+                        }
+
+                        .info-card .glow-effect {
+                            background: rgba(255, 204, 0, 0.3);
+                            box-shadow: 0 4px 20px rgba(255, 204, 0, 0.6);
+                        }
+
+                        .info-card .overlay {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.1));
+                            z-index: -1;
+                        }
+
+                        /* Custom Styles for Updated Fonts and Button Hover Effects */
+                        body {
+                            font-family: 'Poppins', sans-serif;
+                        }
+
+                        .echeckin-heading {
+                            font-size: 48px;
+                            font-weight: 600;
+                            color: #333;
+                            letter-spacing: 2px;
+                            transition: color 0.3s ease, box-shadow 0.3s ease;
+                        }
+
+                        .echeckin-heading:hover {
+                            color: #0056b3;
+                            box-shadow: 0 0 20px rgba(255, 204, 0, 0.8); /* Yellow glow effect on hover */
+                        }
+
+                        .login-button, .register-button {
+                            font-family: 'Poppins', sans-serif;
+                            background: linear-gradient(45deg, #0056b3, #007bff);
+                            color: #fff;
+                            padding: 12px 25px;
+                            border: none;
+                            border-radius: 8px;
+                            font-weight: 600;
+                            font-size: 16px;
+                            display: inline-block;
+                            transition: background 0.3s ease, transform 0.3s ease;
+                            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5); /* Dark yellow shadow */
+                            cursor: pointer;
+                        }
+
+                        .login-button:hover, .register-button:hover {
+                            background: linear-gradient(45deg, #004494, #0056b3);
+                            transform: scale(1.05);
+                            box-shadow: 0 6px 12px rgba(255, 204, 0, 0.7); /* Darker yellow shadow */
+                        }
+
+                        /* Modal Button Styles */
+                        .modal-option {
+                            font-family: 'Poppins', sans-serif;
+                            background: linear-gradient(45deg, #0056b3, #007bff);
+                            color: #fff;
+                            padding: 12px 18px;
+                            margin: 12px 0;
+                            border: none;
+                            border-radius: 8px;
+                            display: block;
+                            font-weight: 600;
+                            text-align: center;
+                            text-decoration: none;
+                            transition: background 0.3s ease, transform 0.3s ease;
+                            box-shadow: 0 4px 10px rgba(255, 204, 0, 0.5); /* Dark yellow shadow */
+                        }
+
+                        .modal-option:hover {
+                            background: linear-gradient(45deg, #004494, #0056b3);
+                            transform: scale(1.05);
+                            box-shadow: 0 6px 12px rgba(255, 204, 0, 0.7); /* Darker yellow shadow */
+                        }
+                    </style>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Footer with Hoverable Social Icons -->
+        <footer class="footer text-white text-center py-3 mt-auto" style="background-color: #0056b3;">
+            <span>&copy; 2024 E-CheckIn</span>
+            <div class="social-icons mt-3">
+                <a href="https://www.facebook.com" target="_blank" class="social-icon text-white fs-4 me-3" style="text-decoration: none;">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.twitter.com" target="_blank" class="social-icon text-white fs-4 me-3" style="text-decoration: none;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="social-icon text-white fs-4 me-3" style="text-decoration: none;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </footer>
+        
+       
+
+        <script>
+            // Show scroll-to-top button when scrolling
+            window.addEventListener("scroll", function () {
+                const scrollTopButton = document.querySelector(".scroll-top");
+                if (window.scrollY > 200) {
+                    scrollTopButton.classList.remove("d-none");
+                } else {
+                    scrollTopButton.classList.add("d-none");
+                }
+            });
+
+            // Scroll to top function
+            function scrollToTop() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            }
+
+            // Bind scroll-to-top click event
+            document.querySelector(".scroll-top").addEventListener("click", scrollToTop);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    </div>
+
+</body>
+
+</html>
